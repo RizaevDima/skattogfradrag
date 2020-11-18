@@ -1,6 +1,6 @@
 var app = {
  
-    // Application Constructor
+    // Application Constructor new
     initialize: function() {
         this.setup_constants();
         this.bindEvents();
