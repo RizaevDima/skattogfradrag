@@ -1,0 +1,7 @@
+{
+    "name": "skattogfradrag",
+    "type": "custom",
+    "integrations": {
+      "cordova": {}
+    }
+  }
