@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>Report</title>
+    <script>
+        var user_id = window.localStorage.getItem("user_id");
+        var user_year = window.localStorage.getItem("user_year");
+
+        if ( ! user_id ) window.location.href = 'index.html';
+
+        user_year = ( ! user_year ) ? new Date().getFullYear() : user_year;
+
+        function createYears(user_year) {
+
+            var currentYear = new Date().getFullYear();
+            var html = '';
+
+            for (i = currentYear; i > (currentYear - 5); i--) {
+                if (user_year == i) 
+                    html += '<option value="' + i + '" selected="selected">' + i + '</option>';
+                else 
+                    html += '<option value="' + i + '">' + i + '</option>';
+            }
+
+            return html;
+
+        }
+    </script>
+</head>
+
+<body class="report">
+    <div class="return_back">
+        <a href="home.html">
+            <img src="img/close.png" alt="Return">
+        </a>
+        
+    </div>
+    <div class="log_out">Log out</div>
+    <div class="select_year">
+        <select name="select_year" id="user_year"></select>
+        <script type="text/javascript">
+            document.getElementById('user_year').innerHTML = createYears(user_year);
+        </script>
+    </div>
+    <div class="document">
+        <p>Registrer poster</p>
+        <div class="section_salgsinntekter">
+            <div class="title">Salgsinntekter</div>
+            <div class="line">
+                <span class="3200">3200</span>
+                <span class="3200_text">Honorarer teater - film - TV - kunstneriske oppdrag</span>
+                <input type="text" name="3200" value="" class="3200_value">
+            </div>
+            <div class="line">
+                <span class="3200">3220</span>
+                <span class="3220_text">Stipendier - Støtte/tilskudd prosjekter</span>
+                <input type="text" name="3220" value="" class="3220_value">
+            </div>
+            <div class="line">
+                <span class="3250">3250</span>
+                <span class="3250_text">Andre konsulentinntekter - udefinerbare </span>
+                <input type="text" name="3250" value="" class="3250_value">
+            </div>
+            <div class="line">
+                <span class="3900">3900</span>
+                <span class="3900_text">Annen driftsrelatert kunstnerisk inntekt - Royalties</span>
+                <input type="text" name="3900" value="" class="3900_value">
+            </div>
+            <div class="total">Sum inntekter: <span class="total_value">30.125</span> <span>kr</span></div>
+        </div>
+        <div class="section_kostnader">
+            <div class="title">Kostnader</div>
+            <div class="scoll_section">
+                <div class="line">
+                    <span class="4550">4550</span>
+                    <span class="4550_text">Kjøp av tjenester i fra kollegaer</span>
+                    <input type="text" name="4550" value="" class="4550_value">
+                </div>
+                <div class="line">
+                    <span class="4555">4555</span>
+                    <span class="4555_text">Kostnader til produksjonsbistand</span>
+                    <input type="text" name="4555" value="" class="4555_value">
+                </div>
+                <div class="line">
+                    <span class="6300">6300</span>
+                    <span class="6300_text">Leie teater, prøvelokale, renovasjon, renhold, varme osv </span>
+                    <input type="text" name="6300" value="" class="6300_value">
+                </div>
+                <div class="line">
+                    <span class="6350">6350</span>
+                    <span class="6350_text">Andel hjemmekontor - % av felleskostnader, forsikr.mm</span>
+                    <input type="text" name="6350" value="" class="6350_value">
+                </div>
+                <div class="line">
+                    <span class="6360">6360</span>
+                    <span class="6360_text">Vedlikehold lokaler - hjemmekontor</span>
+                    <input type="text" name="6360" value="" class="6360_value">
+                </div>
+                <div class="line">
+                    <span class="6410">6410</span>
+                    <span class="6410_text">Leie inventar & utstyr</span>
+                    <input type="text" name="6410" value="" class="6410_value">
+                </div>
+                <div class="line">
+                    <span class="6440">6440</span>
+                    <span class="6440_text">Leie av transportmidler</span>
+                    <input type="text" name="6440" value="" class="6440_value">
+                </div>
+                <div class="line">
+                    <span class="6540">6540</span>
+                    <span class="6540_text">Inventar - data - TV/HiFi - kamera/video - instrumenter mm</span>
+                    <input type="text" name="6540" value="" class="6540_value">
+                </div>
+                <div class="line">
+                    <span class="6560">6560</span>
+                    <span class="6560_text">Andre anskaffelser relatert til næring - utøvende kunstner</span>
+                    <input type="text" name="6560" value="" class="6560_value">
+                </div>
+                <div class="line">
+                    <span class="6565">6565</span>
+                    <span class="6565_text">Kjøp rekvisita produksjoner og materialer - scenografi</span>
+                    <input type="text" name="6565" value="" class="6565_value">
+                </div>
+                <div class="line">
+                    <span class="6690">6690</span>
+                    <span class="6690_text">Reparasjoner og vedlikehold inventar & utstyr</span>
+                    <input type="text" name="6690" value="" class="6690_value">
+                </div>
+                <div class="line">
+                    <span class="6700">6700</span>
+                    <span class="6700_text">Provisjonskostnad Agent</span>
+                    <input type="text" name="6700" value="" class="6700_value">
+                </div>
+                <div class="line">
+                    <span class="6720">6720</span>
+                    <span class="6720_text">Regnskap - skatterådgivning</span>
+                    <input type="text" name="6720" value="" class="6720_value">
+                </div>
+                <div class="line">
+                    <span class="6725">6725</span>
+                    <span class="6725_text">Revisor og advokat</span>
+                    <input type="text" name="6725" value="" class="6725_value">
+                </div>
+                <div class="line">
+                    <span class="6800">6800</span>
+                    <span class="6800_text">Kontorkostnader & kontorrekvisita</span>
+                    <input type="text" name="6800" value="" class="6800_value">
+                </div>
+                <div class="line">
+                    <span class="6900">6900</span>
+                    <span class="6900_text">Elektronisk komm. - fastelefon, mobil, nett</span>
+                    <input type="text" name="6900" value="" class="6900_value">
+                </div>
+                <div class="line">
+                    <span class="7000">7000</span>
+                    <span class="7000_text">Bilkostnader næringsbil - se ark 2</span>
+                    <input type="text" name="7000" value="" class="7000_value">
+                </div>
+                <div class="line">
+                    <span class="7100">7100</span>
+                    <span class="7100_text">Km.godtgjør. privat bil ……..km x kr.3,80 - max 6000km.</span>
+                    <input type="text" name="7100" value="" class="7100_value">
+                </div>
+                <div class="line">
+                    <span class="7120">7120</span>
+                    <span class="7120_text">Bom- og parkeringsutgifter privat- og næringsbil</span>
+                    <input type="text" name="7120" value="" class="7120_value">
+                </div>
+                <div class="line">
+                    <span class="7140">7140</span>
+                    <span class="7140_text">Faglige reiser, kurs, studiereiser, researchreiser </span>
+                    <input type="text" name="7140" value="" class="7140_value">
+                </div>
+                <div class="line">
+                    <span class="7145">7145</span>
+                    <span class="7145_text">Øvrige reisekostnader - kollektiv - taxi</span>
+                    <input type="text" name="7145" value="" class="7145_value">
+                </div>
+                <div class="line">
+                    <span class="7320">7320</span>
+                    <span class="7320_text">Markedsføring, reklame , PR- webside etc.</span>
+                    <input type="text" name="7320" value="" class="7320_value">
+                </div>
+                <div class="line">
+                    <span class="7350">7350</span>
+                    <span class="7350_text">Representasjon - møter kollegaer - overtid lange dager</span>
+                    <input type="text" name="7350" value="" class="7350_value">
+                </div>
+                <div class="line">
+                    <span class="7450">7450</span>
+                    <span class="7450_text">Kontingenter</span>
+                    <input type="text" name="7450" value="" class="7450_value">
+                </div>
+                <div class="line">
+                    <span class="7500">7500</span>
+                    <span class="7500_text">Bedriftsforsikringer - Frivillig sykepenger NAV</span>
+                    <input type="text" name="7500" value="" class="7500_value">
+                </div>
+                <div class="line">
+                    <span class="7510">7510</span>
+                    <span class="7510_text">Pensjonsforsikring i næring 4%</span>
+                    <input type="text" name="7510" value="" class="7510_value">
+                </div>
+                <div class="line">
+                    <span class="7520">7520</span>
+                    <span class="7520_text">Reiseforsikringer</span>
+                    <input type="text" name="7520" value="" class="7520_value">
+                </div>
+                <div class="line">
+                    <span class="7790">7790</span>
+                    <span class="7790_text">Andre driftskostnader </span>
+                    <input type="text" name="7790" value="" class="7790_value">
+                </div>
+                <div class="line">
+                    <span class="7795">7795</span>
+                    <span class="7795_text">Kosmetiske endringer - tenner og kropp</span>
+                    <input type="text" name="7795" value="" class="7795_value">
+                </div>
+                <div class="line">
+                    <span class="7830">7830</span>
+                    <span class="7830_text">Tap på krav - Tidligre inntekstført inntekt</span>
+                    <input type="text" name="7830" value="" class="7830_value">
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn_general">Oppdater utregning</button>
+    <div class="total_kostnader">
+        Sum kostnader:  <span class="value">30.125</span> <span>kr</span>
+    </div>
+    <div class="total_result">
+        Resultat <span class="result_year">2016</span>:  <span class="value">30.125</span> <span>kr</span>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+</body>
+
+</html>
